@@ -1,0 +1,313 @@
+/* Basic Reset and Global Styles */
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f0f23; /* Dark base color */
+    overflow: hidden;
+    cursor: crosshair;
+    color: #ffffff;
+}
+
+html {
+    height: 100%;
+}
+
+/* Container for the 2D/3D Space */
+#gameContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#spaceCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Apply background gradient here so it moves with the panning */
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f23 100%); 
+    transform-origin: center center;
+    transition: transform 0.05s linear; /* Smooth panning */
+}
+
+/* Stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Asteroid Belt */
+.asteroid {
+    position: absolute;
+    background: #a3a3a3; /* Gray color */
+    border-radius: 50%;
+    pointer-events: none; 
+    opacity: 0.5;
+    animation: sparkle 5s infinite alternate; 
+}
+
+@keyframes sparkle {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.5; }
+}
+
+/* Celestial Bodies */
+.celestial-body {
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.celestial-body:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+/* --- Specific Planet Styles --- */
+
+.sun {
+    background: radial-gradient(circle at 30% 30%, #fbbf24, #f59e0b, #d97706);
+    border: 3px solid #fcd34d;
+    box-shadow: 0 0 50px rgba(251, 191, 36, 0.8);
+}
+
+.mercury {
+    background: radial-gradient(circle at 30% 30%, #a3a3a3, #737373, #525252);
+    border: 2px solid #a3a3a3;
+}
+
+.venus {
+    background: radial-gradient(circle at 30% 30%, #fef3c7, #fde047, #f59e0b);
+    border: 2px solid #fcd34d;
+}
+
+.earth {
+    background: radial-gradient(circle at 30% 30%, #4a90e2, #2171b5, #1e3a8a);
+    border: 2px solid #60a5fa;
+}
+
+.moon {
+    background: radial-gradient(circle at 30% 30%, #d1d5db, #9ca3af, #6b7280);
+    border: 1px solid #e5e7eb;
+    box-shadow: none;
+}
+
+.mars {
+    background: radial-gradient(circle at 30% 30%, #dc2626, #b91c1c, #7f1d1d);
+    border: 2px solid #f87171;
+}
+
+.jupiter {
+    background: radial-gradient(circle at 30% 30%, #e9d5a1, #d6b677, #a88a53);
+    border: 3px solid #fcf3db;
+}
+
+.saturn {
+    background: radial-gradient(circle at 30% 30%, #fef9c3, #fcd34d, #d97706);
+    border: 3px solid #fef9c3;
+    overflow: visible; 
+}
+.saturn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%; 
+    height: 10%; 
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%) rotateX(70deg) scale(2);
+    z-index: -1;
+}
+
+.uranus {
+    background: radial-gradient(circle at 30% 30%, #bae6fd, #7dd3fc, #38bdf8);
+    border: 2px solid #bae6fd;
+}
+
+.neptune {
+    background: radial-gradient(circle at 30% 30%, #3b82f6, #2563eb, #1e40af);
+    border: 2px solid #60a5fa;
+}
+
+
+/* Orbit Paths */
+.orbit-path {
+    position: absolute;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* User Interface (UI) Elements */
+#ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+#header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    pointer-events: auto;
+}
+
+#header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Controls Panel (Top Right) */
+#controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 0.9rem;
+    pointer-events: auto;
+    backdrop-filter: blur(10px);
+}
+
+#controls h3 {
+    margin: 0 0 10px 0;
+    color: #60a5fa;
+}
+
+/* Speed Control (Bottom Right) */
+#speedControl {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    pointer-events: auto;
+    backdrop-filter: blur(10px);
+}
+
+#speedControl label {
+    display: block;
+    margin-bottom: 10px;
+    color: #60a5fa;
+    font-weight: bold;
+}
+
+#speedSlider {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+#speedValue {
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+
+/* Information Panel (Bottom) */
+#infoPanel {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#infoPanel.visible {
+    transform: translateY(0);
+}
+
+#infoPanel h2 {
+    margin: 0 0 15px 0;
+    color: #60a5fa;
+    font-size: 1.5rem;
+}
+
+#infoPanel .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+#infoPanel .info-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#infoPanel .info-item strong {
+    color: #fbbf24;
+}
+
+#closeInfo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#closeInfo:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #header h1 {
+        font-size: 1.5rem;
+    }
+    
+    #controls, #speedControl {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+    
+    #infoPanel {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        padding: 15px;
+    }
+}

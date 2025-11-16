@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar System Explorer</title>
+  
+    <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <div id="gameContainer">
+   <div id="spaceCanvas"></div>
+   <div id="ui">
+    <div id="header">
+     <h1 id="appTitle">Solar System Explorer</h1>
+     <p id="welcomeMessage">Explore the cosmos and learn about orbital mechanics</p>
+    </div>
+    <div id="controls">
+     <h3>Navigation</h3>
+     <div id="movementInstructions">
+      WASD to move, Mouse to look around
+     </div>
+     <div id="interactionInstructions">
+      Click celestial bodies for information
+     </div>
+     <div style="margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
+      Scroll to zoom • Hold Shift for faster movement
+     </div>
+    </div>
+    <div id="speedControl">
+     <label for="speedSlider">Time Speed</label> 
+     <input type="range" id="speedSlider" min="0" max="5" step="0.1" value="1">
+     <div id="speedValue">
+      1.0x
+     </div>
+    </div>
+    <div id="infoPanel">
+     <button id="closeInfo">×</button>
+     <h2 id="infoTitle">Celestial Body</h2>
+     <div id="infoContent"></div>
+    </div>
+   </div>
+  </div>
+  
+    <script src="script.js"></script>
+ </body>
+</html>
