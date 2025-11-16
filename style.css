@@ -225,7 +225,19 @@ html {
     color: #fbbf24;
     font-weight: bold;
 }
-
+#credit {
+    position: absolute;
+    bottom: 20px;
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust for true center */
+    color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    pointer-events: none; /* Crucial: Allows mouse clicks/drags to go through to the map */
+    z-index: 100;
+}
 
 /* Information Panel (Bottom) */
 #infoPanel {
