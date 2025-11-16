@@ -4,7 +4,7 @@ This is an interactive, purely front-end visualization of the Solar System, show
 Live Demo
 You can launch the Solar System Explorer directly in your browser here:
 
-➡️ Launch the Explorer(https://aditya123cse.github.io/Solar-System/)
+➡️ [Launch the Explorer](https://aditya123cse.github.io/Solar-System/)
 
 ✨ Features
 Full Solar System: Visualizes the Sun, eight major planets (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune), the Moon, and the Asteroid Belt.
